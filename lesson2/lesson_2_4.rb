@@ -5,7 +5,7 @@ arr_letters = ("a".."z").to_a
 my_hash = {}
 arr_letters.each_with_index do |element, index|
   if arr_vowels.include?(element)
-    my_hash[element]=index
+    my_hash[element] = index + 1
   end
 end
 print my_hash

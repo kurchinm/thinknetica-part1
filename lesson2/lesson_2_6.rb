@@ -15,9 +15,9 @@ loop do
 end
 amount = 0
 shopping_list.each_pair {
-  |key,value| 
+  |title,value| 
   sum = (value["price"] * value["num"]).round(2) 
-  puts "#{key}: #{value}, sum=#{sum}"
+  puts "#{title}: #{value}, sum=#{sum}"
   amount +=sum
 } 
 puts "Total price #{amount}"
