@@ -1,30 +1,26 @@
 #lesson 2.5
 
-year = {}
-year[1] = 31
-year[2] = 28
-year[3] = 31
-year[4] = 30
-year[5] = 31
-year[6] = 30
-year[7] = 31
-year[8] = 31
-year[9] = 30
-year[10] = 31
-year[11] = 30
-year[12] = 31
-
-year_leap = year
-year_leap[2] = 29
-
+year = 
+{
+  1 => 31,
+  2 => 28,
+  3 => 31,
+  4 => 30,
+  5 => 31,
+  6 => 30,
+  7 => 31,
+  8 => 31,
+  9 => 30,
+  10 => 31,
+  11 => 30,
+  12 => 31
+}
 cur_year = gets.to_i
 cur_month = gets.to_i
 cur_day = gets.to_i
-
-days_sum = cur_day
 if (cur_year%4 == 0) || ((cur_year%100 == 0) && (cur_year%400 == 0))
-  year_leap.each_pair {|key, value| days_sum += value if key < cur_month}
-else
-  year.each_pair {|key, value| days_sum += value if key < cur_month}
+  year[2] = 29
 end
+days_sum = cur_day
+year.each_pair {|month, days| days_sum += days if month < cur_month}
 print days_sum
