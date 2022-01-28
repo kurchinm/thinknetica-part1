@@ -1,5 +1,6 @@
 #lesson 2.1
-months = Hash.new
+
+months = {}
 months["january"] = 31
 months["february"] = 28
 months["march"] = 31
@@ -13,8 +14,4 @@ months["october"] = 31
 months["november"] = 30
 months["december"] = 31
 keys = months.keys
-for item in (0..keys.size) do
-  if months[keys[item]] == 30
-    puts keys[item]
-  end
-end
+(0..keys.size).each {|item| puts keys[item] if months[keys[item]] == 30} 
