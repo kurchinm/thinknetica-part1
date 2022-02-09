@@ -19,5 +19,4 @@ class Station
     train_list_by_type = @train_list.select {|train| train.type == type}
     return train_list_by_type
   end
-
 end

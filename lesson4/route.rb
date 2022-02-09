@@ -13,5 +13,4 @@ class Route
   def del_station(station)
     @station_list.delete(station) if @station_list.include?(station) == true
   end
-
 end

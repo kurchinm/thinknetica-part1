@@ -4,21 +4,56 @@ require_relative 'route'
 
 class Menu
 
-  
-
-  # массив экземпляров созданных объектов должен быть доступен для чтения.изменения только изнутри класса через соответствующие методы
-  private
-  attr_reader :station_list, :train_list, :route_list
-  attr_writer :station_list, :train_list, :route_list
-  
-  public
   def initialize
     @station_list = []
     @train_list = []
     @route_list = []
   end
+
+  def main
+    status = "0"
+    loop do
+      case status 
+      when "00"
+        break
+      when "0"
+        self.main_menu
+      when "01"
+        self.create_station
+        status = "0"
+        self.main_menu
+      when "02"
+        self.create_train
+        status = "0"
+        self.main_menu
+      when "03"
+        self.route_menu
+        status = "0"
+        self.main_menu
+      when "04"
+        self.edit_train_menu
+        status = "0"
+        self.main_menu
+      when "05"
+        self.move_train
+        status = "0"
+        self.main_menu
+      when "06"
+        self.show_stations_trains
+        status = "0"
+        self.main_menu
+      else
+        puts "Error input"
+        status = "0"
+      end
+      status += gets.chomp
+    end
+  end
   
   private
+    # массив экземпляров созданных объектов должен быть доступен для чтения.изменения только изнутри класса через соответствующие методы
+  attr_reader :station_list, :train_list, :route_list
+  attr_writer :station_list, :train_list, :route_list
 
   #внутренний метод класса для поиска объекта в массиве по параметру name
   def get_obj_by_name?(list, name)
@@ -30,7 +65,7 @@ class Menu
         break
       end
     }
-    return obj 
+    return obj
   end
 
   #внутренний метод класса для отображения меню создания и редактирования маршрута, доступен только черер public метод .main_menu
@@ -250,9 +285,6 @@ class Menu
     end
   end
 
-
-  #публичные методы - только необходимые для доступа из main.rb
-  public
   def main_menu
     system('clear')
     puts "Press button to:"
@@ -435,5 +467,4 @@ class Menu
       end
     end
   end
-
 end
