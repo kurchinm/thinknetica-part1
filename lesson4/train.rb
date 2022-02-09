@@ -4,34 +4,9 @@ class Train
   def initialize(name)
     @name = name
     @wagons_list = []
-    @speed = 0
-    @cur_route
-    @cur_index
-  end
-  
-  private
-  def inc_speed(value)
-    @speed += value
-  end
-
-  def slow_down
-    @speed = 0
-  end
-
-  def cur_station
-    return @cur_route.station_list[@cur_index]
-  end
-
-  def prev_station
-    return @cur_route.station_list[@cur_index-1] if @cur_index-1 >= 0
-  end
-
-  def next_station
-    return @cur_route.station_list[@cur_index+1] if @cur_index+1 <= @cur_route.station_list.size
   end
   
   #используются из класса menu
-  public
   def add_wagon(wagon)
     if wagon.type == self.type 
       @wagons_list << wagon if @speed == 0 && @wagons_list.include?(wagon) == false
@@ -60,6 +35,26 @@ class Train
     cur_station.take_train(self)
   end
 
+  private
+  def inc_speed(value)
+    @speed += value
+  end
+
+  def slow_down
+    @speed = 0
+  end
+
+  def cur_station
+    @cur_route.station_list[@cur_index]
+  end
+
+  def prev_station
+    @cur_route.station_list[@cur_index-1] if @cur_index-1 >= 0
+  end
+
+  def next_station
+    @cur_route.station_list[@cur_index+1] if @cur_index+1 <= @cur_route.station_list.size
+  end
 end
 
 class PassengerTrain < Train
@@ -69,7 +64,6 @@ class PassengerTrain < Train
     @type = "Passenger"
     super
   end
-
 end
 
 class CargoTrain < Train
@@ -79,7 +73,6 @@ class CargoTrain < Train
     @type = "Cargo"
     super
   end
-
 end
 
 class PassengerWagon
@@ -98,5 +91,4 @@ class CargoWagon
     @type = "Cargo"
     @name = num
   end
-
 end
