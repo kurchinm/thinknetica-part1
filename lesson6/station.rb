@@ -2,16 +2,16 @@ class Station
   include InstanceCounter
   attr_reader :name, :train_list
 
-  @@stations_obj_list = []
+  @@all = []
 
   def self.all
-    @@stations_obj_list
+    @@all
   end
 
   def initialize(name, train_list = [])
     @name = name
     @train_list = train_list
-    @@stations_obj_list << self
+    @@all << self
   end
 
   def take_train(train)
@@ -24,7 +24,6 @@ class Station
   
   private
   def get_train_list_by_type(type)
-    train_list_by_type = @train_list.select {|train| train.type == type}
-    return train_list_by_type
+    @train_list.select {|train| train.type == type}
   end
 end

@@ -13,27 +13,20 @@ end
 
 class Train
   include Factory
+  include InstanceCounter
   attr_reader :name, :num
 
-  @@trains_obj_list = []
+  @@all = []
 
   def self.find(num)
-    obj = nil
-    @@trains_obj_list.each {
-      |object|
-      if object.num == num
-        obj = object
-        break
-      end
-    }
-    return obj
+    @@all.find {|train| train.num == num}
   end
 
   def initialize(name, num)
     @name = name
     @num = num
     @wagons_list = []
-    @@trains_obj_list << self
+    @@all << self
   end
   
   #используются из класса menu
@@ -88,9 +81,7 @@ class Train
 end
 
 class PassengerTrain < Train
-  include InstanceCounter
   attr_reader :type
-  
   def initialize(name, num)
     self.register_instance
     @type = "Passenger"
@@ -99,9 +90,7 @@ class PassengerTrain < Train
 end
 
 class CargoTrain < Train
-  include InstanceCounter
   attr_reader :type
-
   def initialize(name, num)
     self.register_instance
     @type = "Cargo"
