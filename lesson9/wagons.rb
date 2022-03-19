@@ -14,9 +14,9 @@ class PassengerWagon
 
   def take_place
     return unless @free_places >= 0
-      @free_places -= 1
-      @occupied_places += 1
-    end
+
+    @free_places -= 1
+    @occupied_places += 1
   end
 
   def info
@@ -38,9 +38,9 @@ class CargoWagon
 
   def take_space(space = 1)
     return unless @free_space >= space
-      @free_space -= space
-      @occupied_space += space
-    end
+
+    @free_space -= space
+    @occupied_space += space
   end
 
   def info

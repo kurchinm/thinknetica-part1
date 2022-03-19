@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# frozen_string_literal: trueC
 
 require_relative 'instance_counter'
 require_relative 'train'
@@ -200,7 +201,7 @@ class Menu
   end
 
   # внутренний метод класса для добавки существующего маршрута к существующему поезду, доступен только черер edit_train_menu
-  def set_route_to_train
+  def _set_route_to_train
     system('clear')
     puts 'Set route to the train'
     puts 'Input route name...'
@@ -226,7 +227,7 @@ class Menu
       end
     end
     if err == false
-      train.set_route(route)
+      train._set_route(route)
     else
       puts 'Error!'
     end
@@ -486,7 +487,7 @@ class Menu
       when '0'
         edit_train_menu_show
       when '01'
-        set_route_to_train
+        _set_route_to_train
         status = '0'
         edit_train_menu_show
       when '02'

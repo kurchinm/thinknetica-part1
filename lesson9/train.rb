@@ -18,7 +18,7 @@ class Train
   include Factory
   include InstanceCounter
 
-  FORMAT_NUM = /(\d|\w){3}-?(\d|\w){2}/.freeze
+  FORMAT_NUM = /(\d|\w){3}-?(\d|\w){2}/
 
   attr_reader :name, :num
 
@@ -53,7 +53,7 @@ class Train
     @wagons_list.delete(wagon) if @speed.zero? && @wagons_list.include?(wagon) == true
   end
 
-  def set_route(route)
+  def _set_route(route)
     @cur_route = route
     @cur_index = 0
     @cur_route.station_list[@cur_index].take_train(self)

@@ -3,7 +3,7 @@
 class Station
   include InstanceCounter
 
-  FORMAT_NAME = /\S{3,}/.freeze
+  FORMAT_NAME = /\S{3,}/
 
   attr_reader :name, :train_list
 
