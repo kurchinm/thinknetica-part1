@@ -3,7 +3,7 @@
 class Route
   include InstanceCounter
 
-  FORMAT_NAME = /\S{7,}/.freeze
+  FORMAT_NAME = /\S{7,}/
 
   attr_reader :station_list, :name
 
